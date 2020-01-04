@@ -1,0 +1,24 @@
+import { createSlice } from "@reduxjs/toolkit";
+import set from "lodash/set";
+
+const form = createSlice({
+  name: "form",
+  initialState: {
+    test: {
+      values: {
+        name: "sergey",
+        lastName: "kozlov"
+      }
+    }
+  },
+  reducers: {
+    changeField: (state: any, action: any) => {
+      const { id, name, value } = action.payload;
+      set(state, `${id}.values.${name}`, value);
+    }
+  }
+});
+
+export const { changeField } = form.actions;
+
+export default form.reducer;
