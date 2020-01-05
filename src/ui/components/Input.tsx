@@ -1,7 +1,16 @@
 import React, { ChangeEvent } from "react";
 import TextField from "@material-ui/core/TextField";
+import { IComponentBaseProps } from "../interfaces/components";
 
-const Input = ({ disabled, value, required, label, onChange, name }: any) => {
+const Input = ({
+  disabled,
+  value,
+  required,
+  placeholder,
+  onChange,
+  name,
+  formatValue
+}: Required<IComponentBaseProps<string>>) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const data = {
       name,
@@ -9,15 +18,21 @@ const Input = ({ disabled, value, required, label, onChange, name }: any) => {
     };
     onChange(data);
   };
+  const formatValueComponent = formatValue ? formatValue(value) : value;
   return (
     <TextField
       disabled={disabled}
-      value={value}
+      id={name}
+      value={formatValueComponent}
       required={required}
-      label={label}
       onChange={handleChange}
+      placeholder={placeholder}
     />
   );
+};
+
+Input.defaultProps = {
+  value: ""
 };
 
 export default Input;

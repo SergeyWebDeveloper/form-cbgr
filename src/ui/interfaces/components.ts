@@ -1,10 +1,22 @@
 import React from "react";
 
-export interface IComponentBaseProps {
-  value?: any;
-  name: string;
+export interface IFieldCondition {
   disabled?: boolean;
   required?: boolean;
+}
+
+export interface IHandlerComponentProps {
+  onChange?(data: any): void;
+}
+
+export interface IComponentBaseProps<T>
+  extends IFieldCondition,
+    IHandlerComponentProps {
+  value?: T;
+  initialValue?: T;
+  name: string;
   label?: string;
-  component: React.ReactElement;
+  component: any;
+  placeholder?: string;
+  formatValue?(value: T): T;
 }

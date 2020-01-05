@@ -7,7 +7,10 @@ const form = createSlice({
     test: {
       values: {
         name: "sergey",
-        lastName: "kozlov"
+        lastName: "kozlov",
+        test: {
+          prop: '111'
+        }
       }
     }
   },

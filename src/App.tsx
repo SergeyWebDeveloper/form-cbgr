@@ -3,6 +3,7 @@ import Input from "./ui/components/Input";
 import { changeField } from "./core/features/formSlice";
 import { useDispatch, useSelector } from "react-redux";
 import get from "lodash/get";
+import { IComponentBaseProps } from "./ui/interfaces/components";
 
 const idContext = React.createContext<any>(null);
 
@@ -12,7 +13,7 @@ const Form = ({ children, id }: any) => {
   return <Provider value={{ id }}>{children(value)}</Provider>;
 };
 
-const Field = ({ component: Component, ...rest }: any) => {
+const Field = ({ component: Component, ...rest }: IComponentBaseProps<any>) => {
   const ctx = useContext(idContext);
   const valueComponent = useSelector(state => {
     return get(state, `form.${ctx.id}.values.${rest.name}`);
@@ -22,12 +23,10 @@ const Field = ({ component: Component, ...rest }: any) => {
     dispatch(changeField({ ...value, id: ctx.id }));
   };
   return (
-    <Component
-      {...rest}
-      initialValue={rest.value}
-      onChange={handleChange}
-      value={valueComponent}
-    />
+    <div>
+      <label htmlFor={rest.name}>{rest.label}</label>
+      <Component {...rest} onChange={handleChange} value={valueComponent} />
+    </div>
   );
 };
 
@@ -44,6 +43,7 @@ const App: React.FC = () => {
                 disabled={false}
                 required={true}
                 label={"Name"}
+                value={"111111"}
               />
               <Field
                 component={Input}
@@ -52,6 +52,7 @@ const App: React.FC = () => {
                 required={false}
                 label={"LastName"}
               />
+              <Field component={Input} name={"test"} label={"Test"} />
             </>
           );
         }}
