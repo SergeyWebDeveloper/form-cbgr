@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, memo } from "react";
 import TextField from "@material-ui/core/TextField";
 import { IComponentBaseProps } from "../interfaces/components";
 
@@ -19,6 +19,7 @@ const Input = ({
     onChange(data);
   };
   const formatValueComponent = formatValue ? formatValue(value) : value;
+  console.log(formatValueComponent);
   return (
     <TextField
       disabled={disabled}
@@ -35,4 +36,4 @@ Input.defaultProps = {
   value: ""
 };
 
-export default Input;
+export default memo(Input);
