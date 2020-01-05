@@ -2,6 +2,9 @@ import React from "react";
 import Input from "./ui/components/Input";
 import Field from "./core/components/Field";
 import Form from "./core/components/Form";
+import InputField from "./core/components/InputField";
+import Textarea from "./ui/components/Textarea";
+import TextareaField from "./core/components/TextareaField";
 
 const App: React.FC = () => {
   return (
@@ -10,21 +13,19 @@ const App: React.FC = () => {
         {({ valueComponents, idMeta }: any) => {
           return (
             <>
-              <Field
-                component={Input}
+              <InputField
                 name={"name"}
                 disabled={false}
                 required={true}
                 label={"Name"}
               />
-              <Field
-                component={Input}
+              <InputField
                 name={"lastName"}
                 disabled={false}
                 required={false}
                 label={"LastName"}
               />
-              <Field component={Input} name={"test.prop"} label={"Test"} />
+              <TextareaField name={'textarea.path'} label={'4444'} />
             </>
           );
         }}

@@ -1,39 +1,9 @@
-import React, { ChangeEvent, memo } from "react";
-import TextField from "@material-ui/core/TextField";
+import React, { memo } from "react";
 import { IComponentBaseProps } from "../interfaces/components";
+import BaseInput from "./BaseInput";
 
-const Input = ({
-  disabled,
-  value,
-  required,
-  placeholder,
-  onChange,
-  name,
-  formatValue
-}: Required<IComponentBaseProps<string>>) => {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const data = {
-      name,
-      value: e.target.value
-    };
-    onChange(data);
-  };
-  const formatValueComponent = formatValue ? formatValue(value) : value;
-  console.log(formatValueComponent);
-  return (
-    <TextField
-      disabled={disabled}
-      id={name}
-      value={formatValueComponent}
-      required={required}
-      onChange={handleChange}
-      placeholder={placeholder}
-    />
-  );
-};
-
-Input.defaultProps = {
-  value: ""
-};
+const Input = (props: Required<IComponentBaseProps>) => (
+  <BaseInput {...props} />
+);
 
 export default memo(Input);
