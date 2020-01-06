@@ -12,6 +12,24 @@ const form = createSlice({
           prop: "111"
         }
       }
+    },
+    "grid-list": {
+      values: {
+        rowsValue: [
+          {
+            name: "India",
+            population: 1324171354
+          },
+          {
+            name: "India 2",
+            population: 4242
+          },
+          {
+            name: "India 3",
+            population: 234234
+          }
+        ]
+      }
     }
   },
   reducers: {

@@ -30,8 +30,14 @@ export interface IComponentBaseProps<T = string>
 
 export interface IFieldProps<T> extends IComponentBaseProps<T> {
   component: any;
+  children?: React.ReactNode
 }
 
 export interface ITextareaProps extends IComponentBaseProps {
   rows?: number;
+}
+
+export interface ITableProps extends IComponentBaseProps {
+  columns: any[];
+  children: React.ReactElement<IComponentBaseProps>[]
 }

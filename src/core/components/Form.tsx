@@ -5,7 +5,12 @@ import Grid from "@material-ui/core/Grid";
 
 import { contextForm } from "../context/form";
 
-const Form = ({ children, idMeta }: any) => {
+interface IFormProps {
+  idMeta: string;
+  children: (data: any) => React.ReactNode
+}
+
+const Form = ({ children, idMeta }: IFormProps) => {
   const { Provider } = contextForm;
   const valueComponents = useSelector(state =>
     get(state, `form.${idMeta}.values`)
