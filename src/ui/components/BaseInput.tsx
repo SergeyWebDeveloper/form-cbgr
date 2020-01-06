@@ -35,7 +35,9 @@ const BaseInput = ({
 };
 
 BaseInput.defaultProps = {
-  value: ""
+  value: "",
+  variant: "outlined",
+  fullWidth: true
 };
 
 export default memo(BaseInput);

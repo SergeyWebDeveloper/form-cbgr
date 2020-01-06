@@ -1,4 +1,10 @@
 import React from "react";
+import { GridSize } from "@material-ui/core/Grid";
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
+
+export type IBreakpointGrid = {
+  [key in Breakpoint]?: GridSize;
+};
 
 export interface IFieldCondition {
   disabled?: boolean;
@@ -18,6 +24,8 @@ export interface IComponentBaseProps<T = string>
   placeholder?: string;
   formatValue?(value: T): T;
   name: string;
+  breakpointGridLabel?: IBreakpointGrid;
+  breakpointGridComponent?: IBreakpointGrid;
 }
 
 export interface IFieldProps<T> extends IComponentBaseProps<T> {

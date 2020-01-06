@@ -25,7 +25,16 @@ const App: React.FC = () => {
                 required={false}
                 label={"LastName"}
               />
-              <TextareaField name={'textarea.path'} label={'4444'} />
+              <TextareaField
+                name={"textarea.path"}
+                label={"4444"}
+                breakpointGridLabel={{
+                  xs: 12
+                }}
+                breakpointGridComponent={{
+                  xs: 12
+                }}
+              />
             </>
           );
         }}

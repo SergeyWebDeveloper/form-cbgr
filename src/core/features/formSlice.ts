@@ -9,15 +9,15 @@ const form = createSlice({
         name: "sergey",
         lastName: "kozlov",
         test: {
-          prop: '111'
+          prop: "111"
         }
       }
     }
   },
   reducers: {
     changeField: (state: any, action: any) => {
-      const { id, name, value } = action.payload;
-      set(state, `${id}.values.${name}`, value);
+      const { idMeta, name, value } = action.payload;
+      set(state, `${idMeta}.values.${name}`, value);
     }
   }
 });
