@@ -5,7 +5,7 @@ import { ITableProps } from "../../ui/interfaces/components";
 
 const Table = (props: ITableProps) => {
   return (
-    <Field component={SimpleTable} {...props}>
+    <Field component={SimpleTable} {...props} isTable={true}>
       {props.children}
     </Field>
   );

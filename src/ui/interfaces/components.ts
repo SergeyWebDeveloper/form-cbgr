@@ -26,11 +26,13 @@ export interface IComponentBaseProps<T = string>
   name: string;
   breakpointGridLabel?: IBreakpointGrid;
   breakpointGridComponent?: IBreakpointGrid;
+  isCell?: boolean;
 }
 
 export interface IFieldProps<T> extends IComponentBaseProps<T> {
   component: any;
   children?: React.ReactNode
+  isTable?: boolean;
 }
 
 export interface ITextareaProps extends IComponentBaseProps {

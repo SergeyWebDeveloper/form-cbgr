@@ -12,15 +12,23 @@ const GridPage = () => {
       <Form idMeta={"grid-list"}>
         {({ value }) => {
           return (
+            // @ts-ignore
             <Table
-              name={"1111"}
+              name={"rowsValue"}
               label={"Table Label"}
               columns={[{ label: "111", id: 1 }, { label: "22222", id: 2 }]}
             >
-              {[
-                <InputField name={"name"} />,
-                <InputField name={"population"} />
-              ]}
+              {(value: any) => {
+                return value.map((obj: any, idx: any) => {
+                  // TODO: isCell flag
+                  return (
+                    <>
+                      <InputField name={`rowsValue[${idx}].name`} />
+                      <InputField name={`rowsValue[${idx}].population`} />
+                    </>
+                  );
+                });
+              }}
             </Table>
           );
         }}

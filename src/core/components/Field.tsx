@@ -14,17 +14,23 @@ const Field = ({
   ...rest
 }: IFieldProps<any>) => {
   const { idMeta } = useContext(contextForm);
+  const { name, label, isCell } = rest;
   const valueComponent = useSelector(state => {
-    return get(state, `form.${idMeta}.values.${rest.name}`);
+    return get(state, `form.${idMeta}.values.${name}`);
   });
   const dispatch = useDispatch();
   const handleChange = (value: any) => {
     dispatch(changeField({ ...value, idMeta }));
   };
+  if (isCell) {
+    return (
+      <Component {...rest} onChange={handleChange} value={valueComponent} />
+    );
+  }
   return (
     <Grid container={true} spacing={1} alignItems={"center"}>
       <Grid item={true} {...breakpointGridLabel}>
-        <label htmlFor={rest.name}>{rest.label}</label>
+        <label htmlFor={name}>{label}</label>
       </Grid>
       <Grid item={true} {...breakpointGridComponent}>
         <Component {...rest} onChange={handleChange} value={valueComponent} />

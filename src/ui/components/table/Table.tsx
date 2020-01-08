@@ -52,9 +52,11 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Table({ columns, children }: ITableProps) {
+export default function Table({ columns, children, value }: ITableProps) {
   const classes = useStyles();
-
+  // const renderChildren = React.Children.map(children, child =>
+  //   React.cloneElement(child, { isCell: true })
+  // );
   return (
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
@@ -73,21 +75,8 @@ export default function Table({ columns, children }: ITableProps) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {children}
-            {/*{rows.map(row => {*/}
-            {/*  return (*/}
-            {/*    <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>*/}
-            {/*      {columns.map(column => {*/}
-            {/*        const value = row[column.id];*/}
-            {/*        return (*/}
-            {/*          <TableCell key={column.id} align={column.align}>*/}
-            {/*            {column.format && typeof value === 'number' ? column.format(value) : value}*/}
-            {/*          </TableCell>*/}
-            {/*        );*/}
-            {/*      })}*/}
-            {/*    </TableRow>*/}
-            {/*  );*/}
-            {/*})}*/}
+            // @ts-ignore
+            {children(value)}
           </TableBody>
         </MuiTable>
       </TableContainer>
